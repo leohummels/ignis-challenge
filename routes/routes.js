@@ -10,8 +10,8 @@ routes.get('/', (req, res) => res.render('../views/layouts/form'));
 
 routes.post('/add', (req, res) => {
                 const dataTeams = req.body.teams
-                res.render('../views/layouts/resp')
-                
+                //res.render('../views/layouts/resp')
+                res.send(dataTeams)
                 }   
         );
 
