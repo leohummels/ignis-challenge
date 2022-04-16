@@ -1,12 +1,16 @@
 class SelectItems {
     async selectItems(arr){
-        const regexapp = /((\w)+(;)+(.*))/g
+        const regexapp = /((.*)+(;)+(.*))/g
         const result = await arr.match(regexapp)
         return result
     }
 
-    async matches() {
-        //seleção de grupos
+    async matches(arr) {
+        const regexTeams = /(\b\w*;\b)/g
+        arr.forEach((item) => { 
+            let select = item.match(regexTeams).toString().replace(/;/, '')
+            return select
+        }   )
     }
 }
 

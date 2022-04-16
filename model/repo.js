@@ -1,7 +1,7 @@
 
 
 class Repository {
-    repo = []
+    repo =[];
 
     async insertArr(arr){
         for(let i = 0; i <= arr.length; i++){

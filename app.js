@@ -6,6 +6,7 @@ const app = new Express()
 
 app.use(Express.json())
 app.use(Express.urlencoded({extended: true}))
+app.use(Express.static(__dirname+'/views/layouts'))
 
 app.use(routes)
 

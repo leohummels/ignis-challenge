@@ -1,0 +1,30 @@
+:root {
+    --color-background:#99eea8;
+    --color-primary-text:#000000;
+    --color-rectangle:#DFDFDF;
+    --color-box:#67C2C2;
+    --color-secondary-box:#4a9696;   
+}
+
+body {
+    background-color: var(--color-background);
+    text-decoration-color: var(--color-primary-text);
+
+}
+
+form{
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0vw 0.5vw 0vw 0.5vw;
+    text-align: center;
+    margin:auto;
+}
+
+div{
+    align-content: center;
+}
+
