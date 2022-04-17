@@ -29,6 +29,34 @@ class SelectItems {
         console.log(placeRepo)
         return placeRepo
     }
+
+    async sortMatch(places, teams) {
+        const arrMatch = []
+        const control = []
+        const placeRepo = places
+        const teamRepo = teams
+        let tamanho = await teamRepo.length
+
+        do{
+            let sorteio = Math.floor(Math.random() * teamRepo.length)
+            let sorteioB = Math.floor(Math.random() * teamRepo.length)
+            let timeA = teamRepo[sorteio]
+            let timeB = teamRepo[sorteioB]
+
+            if (timeA !== timeB) {
+                let index = Math.floor(Math.random() * placeRepo.length)
+                let sorteioCidade = placeRepo[index]
+                if(arrMatch.length <= tamanho/3) {
+                    await arrMatch.push(`${timeA} vs ${timeB} - ${sorteioCidade} - Rodada 1`)
+                } else {
+                    await arrMatch.push(`${timeA} vs ${timeB} - ${sorteioCidade} - Rodada 2`)
+                }
+            }
+
+        }while(arrMatch.length !== tamanho)
+        console.log(teams)
+        return arrMatch
+    }
 }
 
 module.exports = SelectItems

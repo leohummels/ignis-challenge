@@ -13,17 +13,23 @@ class Service {
 
     async selectTeams(){
         const rec = await repo.repo
-        const teams = await selectItem.matches(rec)
-        console.log(teams)
+        const teams = await repo.matches(rec)
         return teams
     }
 
     async selectPlaces(){
         const rec = await repo.repo
-        const places = await selectItem.places(rec)
-        console.log(places)
+        const places = await repo.places(rec)
         return places
     }
+
+    async arrangeMatch(){
+        let places = await repo.placesRepo
+        let teams = await repo.teamsRepo
+        const result = await selectItem.sortMatch(places, teams)
+        return result
+    }
+
 }
 
 module.exports = Service

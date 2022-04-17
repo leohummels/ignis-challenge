@@ -7,17 +7,10 @@ const service = new Service
 
 class Controller {
 
-    async getTeams(req, res, next){
+    async sendTeams(req, res, next){
             const dataTeams = await req.body.teams
             await service.insertRepo(dataTeams)
             res.sendFile('/public/resp.html', { root: "." })
-            //res.render('../views/layouts/resp')
-            next();
-    }
-
-    async findMatch(req, res, next){
-        res.sendFile('/public/resp.html', { root: "." })
-        //res.render('../views/layouts/resp')
     }
 
     async teams(req, res){
@@ -32,6 +25,14 @@ class Controller {
         res.send(rec)
     }
 
+    async matches(req, res){
+        const result = await service.arrangeMatch()
+        res.send(result)
+    }
+
+    async groups(req, res){
+        res.sendFile('/public/group.html', { root: "." })
+    }
 }
 
 module.exports = Controller
