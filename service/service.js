@@ -13,8 +13,16 @@ class Service {
 
     async selectTeams(){
         const rec = await repo.repo
-        const treat = await selectItem.matches(rec)
-        console.log(treat)
+        const teams = await selectItem.matches(rec)
+        console.log(teams)
+        return teams
+    }
+
+    async selectPlaces(){
+        const rec = await repo.repo
+        const places = await selectItem.places(rec)
+        console.log(places)
+        return places
     }
 }
 

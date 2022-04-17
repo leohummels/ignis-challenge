@@ -1,24 +1,36 @@
 const Service = require('../service/service')
-const Repository = require('../model/repo')
-const SelectItems = require('./selectItem')
+const {next} = require('express')
+
 
 const service = new Service
-const repo = new Repository
+
 
 class Controller {
 
-    async getTeams(req, res){
+    async getTeams(req, res, next){
             const dataTeams = await req.body.teams
-            service.insertRepo(dataTeams)
-            res.render('../views/layouts/resp')
+            await service.insertRepo(dataTeams)
+            res.sendFile('/public/resp.html', { root: "." })
+            //res.render('../views/layouts/resp')
+            next();
     }
 
-    async findMatch(req, res){
-        const rec = service.selectTeams()
+    async findMatch(req, res, next){
+        res.sendFile('/public/resp.html', { root: "." })
+        //res.render('../views/layouts/resp')
+    }
+
+    async teams(req, res){
+        const rec = await service.selectTeams()
         console.log(rec)
-        res.render('../views/layouts/resp')
-    }
+        res.send(rec)
+    } 
 
+    async places(req, res){
+        const rec = await service.selectPlaces()
+        console.log(rec)
+        res.send(rec)
+    }
 
 }
 
